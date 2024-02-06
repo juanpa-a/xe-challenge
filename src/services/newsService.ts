@@ -4,9 +4,9 @@ type ReqConfig = {
 };
 
 class NewsService {
-    private BASE_URL = "https://newsapi.org/v2/top-headlines";
+    private BASE_URL = "http://newsapi.org/v2/top-headlines";
     private url: URL;
-    private SOURCES_URL = "https://newsapi.org/v2/top-headlines/sources";
+    private SOURCES_URL = "http://newsapi.org/v2/top-headlines/sources";
     private sourcesUrl: URL;
 
     constructor({ language = "en", category }: ReqConfig) {
