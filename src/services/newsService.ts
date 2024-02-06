@@ -3,8 +3,6 @@ type ReqConfig = {
     category?: string;
 };
 
-const NEXT_PUBLIC_API_KEY = '78165ee2c3f448a1b58ee47e0d6eb05d'
-
 class NewsService {
     private BASE_URL = "https://newsapi.org/v2/top-headlines";
     private url: URL;
@@ -21,9 +19,9 @@ class NewsService {
             this.url.searchParams.append("category", category);
         }
 
-        if (NEXT_PUBLIC_API_KEY) {
-            this.url.searchParams.append("apiKey", NEXT_PUBLIC_API_KEY);
-            this.sourcesUrl.searchParams.append("apiKey", NEXT_PUBLIC_API_KEY);
+        if (process.env.NEXT_PUBLIC_API_KEY) {
+            this.url.searchParams.append("apiKey", process.env.NEXT_PUBLIC_API_KEY);
+            this.sourcesUrl.searchParams.append("apiKey", process.env.NEXT_PUBLIC_API_KEY);
         } else {
             throw new Error("missing api key");
         }
