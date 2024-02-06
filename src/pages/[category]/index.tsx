@@ -1,6 +1,6 @@
 import { Article } from '@/components/article';
 import { Template } from '@/components/template';
-import { useNews } from '@/hooks/useNews';
+import { mount } from '@/utils/mount';
 import NewsService from '@/services/newsService';
 import { useStore } from '@/store/useStore';
 import { useRouter } from 'next/router';
@@ -17,7 +17,7 @@ export default function Home() {
       language: store.language,
       category: category as string,
     })
-    useNews(store, api)
+    mount(store, api)
   }, [store.language])
 
   return (
