@@ -3,7 +3,7 @@ import { NewsStore } from "@/store/useStore"
 import NewsService from "@/services/newsService"
 
 
-export const useNews = async (news: NewsStore, api: NewsService) => {
+export const mount = (news: NewsStore, api: NewsService) => {
     let sourceData: Sources = {}
     let articleData: Articles = []
     let categories: Set<string> = new Set([])
@@ -27,8 +27,6 @@ export const useNews = async (news: NewsStore, api: NewsService) => {
             url: article.url,
         }
     }
-
-    
 
     api.fetchSources()
         .then(sources => sources.forEach(mapSources))

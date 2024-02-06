@@ -1,7 +1,7 @@
 import { Article } from '@/components/article';
 import { Categories } from '@/components/categories';
 import { Template } from '@/components/template';
-import { useNews } from '@/hooks/useNews';
+import { mount } from '@/utils/mount';
 import NewsService from '@/services/newsService';
 import { useStore } from '@/store/useStore';
 import { useEffect } from "react";
@@ -15,7 +15,7 @@ export default function Home() {
     const api = new NewsService({
       language: store.language,
     })
-    useNews(store, api)
+    mount(store, api)
   }, [store.language])
 
 
@@ -27,8 +27,9 @@ export default function Home() {
       </div>
 
       <div className='grid grid-cols-3 gap-6'>
-        {store.articles.map(({ title, description, source }) => {
+        {store.articles.map(({ title, description, source }, index) => {
           return <Article
+            key={index}
             title={title}
             description={description}
             category={source in store.sources 
